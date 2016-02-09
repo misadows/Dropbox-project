@@ -8,6 +8,7 @@ add_library(communication_utils SHARED communication_utils.c)
 add_library(stack SHARED stack.c)
 add_library(box_utils SHARED box_utils.c)
 
+
 target_link_libraries(client LINK_PUBLIC pthread)
 target_link_libraries(server LINK_PUBLIC socket_utils)
 target_link_libraries(client LINK_PUBLIC socket_utils)

@@ -1,0 +1,9 @@
+/Release/
+CMakeFiles/
+*.cmake
+CMakeCache.txt
+Makefile
+*.dir/
+lib/
+/Vagrantfile
+.vagrant/
