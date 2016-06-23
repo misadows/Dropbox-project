@@ -31,22 +31,24 @@ void run(server_t server){
             exit(EXIT_FAILURE);
         }
 
-        for(fd=0; fd<=server.highest_fd; fd++){
-            if(FD_ISSET(fd, &read_set))
-            {
-                if(fd==server.socket){
-                    register_client(&server);
-                }
-                else{
-                    handle_client_message(fd);
-                }
-            }
-        }
+        manage_clients(fd, server, read_set);
     }
 
 }
 
-void manage_clients(int fd, server_t server, fd_set read_set)
+void manage_clients(int fd, server_t server, fd_set read_set){
+    for(fd=0; fd<=server.highest_fd; fd++){
+        if(FD_ISSET(fd, &read_set))
+        {
+            if(fd==server.socket){
+                register_client(&server);
+            }
+            else{
+                handle_client_message(fd);
+            }
+        }
+    }
+}
 
 server_t get_server(int socket){
     server_t server;
